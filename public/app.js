@@ -8,7 +8,10 @@ document.addEventListener("click",  event => {
         const block = event.target.parentNode.parentNode.childNodes[0]
         const id = event.target.dataset.id
         const newNameNote = prompt();
-     update(id, newNameNote).then(()=> block.textContent = newNameNote)
+        if (newNameNote) {
+            update(id, newNameNote).then(()=> block.textContent = newNameNote)
+        }
+
     }
 })
 

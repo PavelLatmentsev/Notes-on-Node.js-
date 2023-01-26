@@ -11,10 +11,8 @@ const note = {
     title,
     id: Date.now().toString()
 }
-notes.push(note)
-
+    notes.push(note)
     await fs.writeFile(notesPath, JSON.stringify((notes)))
-    console.log(chalk.bgGreen("Note was added"))
 }
 async function getNote() {
     const notes = await fs.readFile(notesPath, {encoding:"utf-8"} )
@@ -22,7 +20,6 @@ async function getNote() {
 }
 async function printNotes() {
 const notes = await getNote()
-    console.log(chalk.bgBlue("Here is list notes:"))
     notes.forEach(note => {
         console.log(chalk.blue(note.id,note.title))
     })
@@ -40,5 +37,5 @@ async function updateNote(id, note) {
     await fs.writeFile(notesPath, JSON.stringify((newNotes)))
 }
 module.exports= {
-    addNote,printNotes,removeNote, getNote,updateNote
+    addNote,removeNote, getNote,updateNote
 }
